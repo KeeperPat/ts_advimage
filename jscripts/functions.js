@@ -29,10 +29,11 @@ function ts_get_images_path(){
   return to_path;
 }
 function ts_ce(tag,name){
-  if (name && window.ActiveXObject){
-    element = document.createElement('<'+tag+' name="'+name+'">');
-  }else{
-    element = document.createElement(tag);
+  var element;
+  try{
+    element=document.createElement('<'+tag+' name="'+name+'">');
+  }catch(e){
+    element=document.createElement(tag);
     element.setAttribute('name',name);
   }
   return element;
